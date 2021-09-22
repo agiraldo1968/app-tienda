@@ -82,8 +82,9 @@ paginaActual = 0
       return resultado
   }
 
-  listaProductosCategoria(lista:string)
+  listaProductosCategoria(lista:string, clase: number = 0, tipo: number = 0)
   {
+      console.log('Cargando productos con ',clase,' y ', tipo)
       let resultado:Producto[] = []
 
       this.productos.filter(x => lista.includes(x.codInst.toString())).forEach(p => {
@@ -91,7 +92,37 @@ paginaActual = 0
         {
           if (!resultado.find(s => s.codigoAux === p.codigoAux))
           {
-            resultado.push(p)
+            if (clase != 0 && tipo != 0)
+            {
+                if (p.caracteristicas && p.caracteristicas.Material == clase.toString() && p.tipos.find(x => x.IDTipo === tipo))
+                {
+                    resultado.push(p)
+                }
+            }
+            else 
+            {
+                if (clase != 0)
+                {
+                    if (p.caracteristicas && p.caracteristicas.Material == clase.toString())
+                    {
+                        resultado.push(p)
+                    }
+                }
+                else
+                {
+                    if (tipo != 0)
+                    {
+                        if (p.tipos.find(x => x.IDTipo === tipo))
+                        {
+                            resultado.push(p)
+                        }
+                    }
+                    else 
+                    {
+                        resultado.push(p)
+                    }
+                }
+            }
           }
         }
       })

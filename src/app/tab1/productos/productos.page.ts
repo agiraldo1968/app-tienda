@@ -29,8 +29,8 @@ export class ProductosPage implements OnInit, OnDestroy {
   listaTipos:Generica[] = []
 
   instanciasBaterias:string
-  claseSeleccionada:number
-  tipoSeleccionado:number
+  claseSeleccionada:number = 0
+  tipoSeleccionado:number = 0
   instanciaSeleccionada:number 
 
   public suscripcion: Subscription
@@ -117,7 +117,7 @@ export class ProductosPage implements OnInit, OnDestroy {
     switch (this.tipo) {
       case "0":
       case "1":
-        this.productosService.listaProductosCategoria(this.hijos).slice(this.pos, this.pos + 12).forEach(p => {
+        this.productosService.listaProductosCategoria(this.hijos,this.claseSeleccionada,this.tipoSeleccionado).slice(this.pos, this.pos + 12).forEach(p => {
           this.productos.push(p)
           existe = true
         })
@@ -152,29 +152,60 @@ export class ProductosPage implements OnInit, OnDestroy {
     }
   }
 
+  cargaProductos()
+  {
+      this.productos = []
+      this.pos = 0
+      this.cargarProductos()
+  }
+
   cargarInstancia(instancia:Instancia)
   {
     this.cargarLista(instancia.codInst.toString())
-    this.productos = []
-    this.pos = 0
-    this.cargarProductos()
+    this.cargaProductos()
   }
 
   cambioInstancia()
   {
+    this.claseSeleccionada = 0
+    this.tipoSeleccionado = 0
+    this.verClase = false
+    this.verTipo = false
     this.cargarLista(this.instanciaSeleccionada.toString())
-    this.productos = []
-    this.pos = 0
-    this.cargarProductos()
+    this.cargaProductos()
+  }
+
+  mostrarClase()
+  {   
+      console.log('Ahora el valor es ', this.verClase)
+      //this.verClase = !this.verClase
+      if (this.verClase)
+      {
+          console.log('Ahora a cargar todas!!!')
+          this.claseSeleccionada = 0
+          this.cargaProductos()
+      }
+
+      //this.verClase = !this.verClase
   }
 
   cambioClase()
   {
-      console.log('Por lo menos hace algo', this.claseSeleccionada)
+      //console.log('Por lo menos hace algo', this.claseSeleccionada)
+      this.cargaProductos()
   }
 
+  mostrarTipo()
+  {
+      console.log(this.verTipo)
+      if (this.verTipo)
+      {
+          this.tipoSeleccionado = 0
+          this.cargaProductos()
+      }
+  }
   cambioTipo()
   { 
-      console.log(this.tipoSeleccionado)
+      this.cargaProductos()
   }
 }
