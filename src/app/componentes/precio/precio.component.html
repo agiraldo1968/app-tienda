@@ -1,0 +1,13 @@
+<ion-row *ngIf="!esVertical">
+  <ion-col [ngStyle]= "{'background': color ,'width': '10%', 'border': '1px solid #fff'}" 
+           *ngFor="let color of arrayPrecio"
+           (click)="onClick(color)"
+  >
+  </ion-col>
+</ion-row>
+
+<div  *ngIf="esVertical">
+  <ion-row class="precio-vertical" *ngFor="let color of arrayPrecio">
+    <ion-col size="12" [ngStyle]="{'background': color, 'border' : '1px solid #fff'}"></ion-col>
+  </ion-row>
+</div>

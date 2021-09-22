@@ -1,0 +1,61 @@
+<ion-header color="dark">
+  <ion-toolbar color="dark">  </ion-toolbar>
+  <!--ion-slides [options]="opciones" *ngIf="instancias" class="ion-padding">
+    <ion-slide *ngFor="let instancia of instancias" (click)="cargarInstancia(instancia)">
+      <ion-label class="fuente">
+        {{ instancia.descrip }}
+      </ion-label>
+    </ion-slide>
+  </ion-slides-->
+  <ion-grid>
+    <ion-row>
+      <ion-col size-xs="12" size-sm="4">
+        <ion-select interface="popover" placeholder="Seleccione un valor" [(ngModel)]="instanciaSeleccionada" (ionChange)="cambioInstancia()">
+          <ion-select-option [value]="instancia.codInst" *ngFor="let instancia of instancias">{{ instancia.descrip}}</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size-xs="6" size-sm="2" *ngIf="esBateria">
+        <ion-item>
+          <ion-label>Clase</ion-label>
+          <ion-toggle [(ngModel)]="verClase" (click)="!verClase"></ion-toggle>
+        </ion-item>
+      </ion-col>
+      <ion-col size-xs="6" size-sm="2" *ngIf="verClase && esBateria">
+        <ion-select interface="popover" placeholder="Seleccione una" [(ngModel)]="claseSeleccionada" (ionChange)="cambioClase()">
+          <ion-select-option [value]="clase.Id" *ngFor="let clase of listaClases">{{ clase.Descrip }}</ion-select-option>
+        </ion-select>      
+      </ion-col>
+      <ion-col size-xs="6" size-sm="2" *ngIf="esBateria">
+        <ion-item>
+          <ion-label>Tipo</ion-label>
+          <ion-toggle [(ngModel)]="verTipo" (click)="!verTipo"></ion-toggle>
+        </ion-item>
+      </ion-col>    
+      <ion-col size-xs="6" size-sm="2" *ngIf="verTipo && esBateria">
+        <ion-select interface="popover" placeholder="Seleccione uno" [(ngModel)]="tipoSeleccionado" (ionChange)="cambioTipo()">
+          <ion-select-option [value]="tipo.Id" *ngFor="let tipo of listaTipos">{{ tipo.Descrip }}</ion-select-option>
+        </ion-select>      
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+  
+<ion-content>
+  <ion-list>
+    <ion-grid fixed>
+      <ion-row *ngIf="productos.length > 0">
+        <ion-col size-md="4" size-sm="6" size-xs="12" *ngFor="let producto of productos">
+          <app-producto [producto]="producto" [rutaImagenes]="rutaImagenes"></app-producto>
+        </ion-col>
+      </ion-row>
+
+      <ion-infinite-scroll threshold="150px" (ionInfinite)="cargarProductos($event)">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+          loadingText="Cargando ...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+      
+    </ion-grid>
+  </ion-list>
+</ion-content>

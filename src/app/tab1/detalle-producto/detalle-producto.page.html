@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-text color="primary">
+      <h1>Basura</h1>
+    </ion-text>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>  
+  <ion-grid>
+    <ion-row *ngIf="producto">
+      <ion-col size="2">
+          <ion-slides mode="md" pager="md" scrollbar="md" [options]="opciones">
+            <ion-slide *ngFor="let adicional of imgAdicionales">
+                <img src="{{ adicional | adicionales }}" class="miniatura" (click)="verAdicional(adicional)">
+            </ion-slide>
+          </ion-slides>
+      </ion-col>
+      <ion-col size="10" size-lg="5">
+        <app-producto [producto]="producto" [rutaImagenes]="rutaImagenes" [verPedido]="false"></app-producto>
+      </ion-col>
+      <ion-col size="12" size-lg="5">
+        <ion-grid fixed>
+          <ion-row>
+            <ion-col size="12">
+              <ion-grid fixed>
+                <ion-row>
+                  <ion-col size="6">
+                    <ion-button (click)="verDetalle()" expand="block" fill="clear">
+                      {{ producto.codProd}}
+                    </ion-button>
+                  </ion-col>
+                  <ion-col size="6" *ngIf="producto.adicionales.descAmpliada">
+                    <ion-button (click)="verAmpliada()" expand="block" fill="clear">
+                      Características
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+                <ion-row *ngIf="esDetalle">
+                  <ion-col size="12">
+                    <ion-card>
+                      <ion-card-header>
+                        <ion-card-title>
+                           {{ producto.descrip }}
+                        </ion-card-title>
+                      </ion-card-header>
+                      <ion-card-content>
+                          <ion-slides mode="md" pager="md" scrollbar="md" [options]="opcionesAux" *ngIf="auxiliares.length > 0">
+                            <ion-slide *ngFor="let auxiliar of auxiliares">
+                              <img src="{{ auxiliar | imagenes }}" class="miniatura" (click)="cambiarImagen(auxiliar)">
+                            </ion-slide>
+                          </ion-slides>
+                      </ion-card-content>
+                      <app-pedido [producto]="producto"></app-pedido>
+
+                    </ion-card>
+                  </ion-col>
+                </ion-row>
+                <ion-row *ngIf="esDescripcion">
+                  <ion-col size="12">
+                    <ion-card>
+                      <ion-card-content>
+                        {{ producto.adicionales.descAmpliada }}
+                      </ion-card-content>
+                    </ion-card>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+              </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

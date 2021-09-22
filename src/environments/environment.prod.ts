@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  rutaImagenes: 'https://www.makingbusiness.com.co/imagenes/',
+  rutaPulsos: 'https://www.makingbusiness.com.co/imagenes/manilla/'
 };

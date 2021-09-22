@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  rutaImagenes: 'http://192.168.0.3:83/imagenes/', // '/assets/imagenes/',
+  rutaPulsos: 'http://192.168.0.3:83/imagenes/manillas/', //'/assets/imagenes/manillas/'
 };
 
 /*

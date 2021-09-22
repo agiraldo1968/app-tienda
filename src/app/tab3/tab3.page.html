@@ -1,17 +1,38 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <ion-title></ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+<ion-content>
+    <ion-grid fixed>
+      <ion-radio-group class="ion-padding">
+        <ion-row>
+          <ion-col size-md="2" size-xs="5">
+            <ion-label>Pendientes</ion-label>
+          </ion-col>
+          <ion-col size="1">
+            <ion-radio value="pend"></ion-radio>
+          </ion-col>
+          <ion-col size-md="2" size-xs="5">
+            <ion-label>Enviados</ion-label>          
+          </ion-col>
+          <ion-col size="1">
+            <ion-radio value="env"></ion-radio>
+          </ion-col>
+          <ion-col size-md="2" size-xs="5">
+            <ion-label>Seguimiento</ion-label>
+          </ion-col>
+          <ion-col size="1">
+            <ion-radio value="seg"></ion-radio>
+          </ion-col>
+          <ion-col size-md="2" size-xs="5">
+            <ion-label>Referencias</ion-label>          
+          </ion-col>
+          <ion-col size="1">
+            <ion-radio value="ref"></ion-radio>
+          </ion-col>          
+      </ion-row>
+      </ion-radio-group>
+  </ion-grid>
+  <!--app-explore-container name="Tab 3 page"></app-explore-container-->
 </ion-content>

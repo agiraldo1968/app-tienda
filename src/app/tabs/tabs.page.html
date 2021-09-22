@@ -1,19 +1,36 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="dark" class="barra">
+    <img src="assets/icon/MB.jpg" class="imagen">
+
+    <ion-buttons slot="end">
+      <ion-input type="text" placeholder="Buscar...." #dato></ion-input>
+      <ion-button (click)="buscar(dato.value)" fill="clear" shape="round">
+        <ion-icon slot="end" name="search"></ion-icon>
+      </ion-button>
+      <ion-button expand="block" fill="clear" shape="round" (click)="verPedido()" *ngIf="carroService.pedido.length > 0">
+        <ion-icon name="cart-outline" class="ion-padding" size="large"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>    
+  </ion-toolbar>
+</ion-header>
+
 <ion-tabs>
 
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="tab1">
-      <ion-icon name="triangle"></ion-icon>
-      <ion-label>Tab 1</ion-label>
+      <ion-icon name="list-circle-outline"></ion-icon>
+      <ion-label>Categorías</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="tab2">
-      <ion-icon name="ellipse"></ion-icon>
-      <ion-label>Tab 2</ion-label>
+      <ion-icon name="search-circle-outline"></ion-icon>
+      <ion-label>Buscar</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="tab3">
-      <ion-icon name="square"></ion-icon>
-      <ion-label>Tab 3</ion-label>
+      <ion-icon name="receipt-outline"></ion-icon>
+      <ion-label>{{ plataforma }}</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 

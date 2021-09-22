@@ -1,0 +1,46 @@
+[
+    {
+        "precio": "0",
+        "color": "pink"
+    },
+    {
+        "precio": "1",
+        "color": "black"
+    },
+    {
+        "precio": "2",
+        "color": "red"
+    },
+    {
+        "precio": "3",
+        "color": "yellow"
+    },
+    {
+        "precio": "4",
+        "color": "blue"
+    },
+    {
+        "precio": "5",
+        "color": "yellowgreen"
+    },
+    {
+        "precio": "6",
+        "color": "purple"
+    },
+    {
+        "precio": "7",
+        "color": "cyan"
+    },
+    {
+        "precio": "8",
+        "color": "green"
+    },
+    {
+        "precio": "9",
+        "color": "orange"
+    },
+    {
+        "precio": ".",
+        "color": "gray"
+    }
+]
